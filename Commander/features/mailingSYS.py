@@ -43,5 +43,6 @@ class Mail:
         #do the thing
         User = ""
         Pass = ""
-        open("mailAccounts.txt", 'a').write("\n" + User + ":" + Pass)
+        with open("mailAccounts.txt", 'a') as f:
+            f.write("\n" + User + ":" + Pass)
         self.mailAccounts.append(User + ":" + Pass)
