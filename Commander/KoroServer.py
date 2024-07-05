@@ -98,7 +98,9 @@ class Server:
         for i, item in enumerate(self.connected):
             item.send(self.keys[i].encrypt(("%$StopAtt").encode()))
 
-open("IP.txt", 'w')
+with open("IP.txt", 'w') as f:
+    pass
+    
 ip = "0.0.0.0"
 port = 80
 
