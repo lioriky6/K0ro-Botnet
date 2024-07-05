@@ -1,5 +1,3 @@
-import socket
-from cryptography.fernet import Fernet
 
 
 class Mail:
