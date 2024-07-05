@@ -1,5 +1,5 @@
 from Crypto.PublicKey import RSA
-from Crypto.Cipher import PKCS1_OAEP, AES
+from Crypto.Cipher import PKCS1_OAEP
 import os
 
 class RSAcrypto:

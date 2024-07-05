@@ -2,7 +2,7 @@ import tkinter
 from tkinter import filedialog, font, ttk
 import win32gui, win32con
 
-import threading, requests
+import requests
 class GUI:
     def __init__(self, server):
         self.server = server

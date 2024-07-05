@@ -5,7 +5,6 @@ import os, sqlite3, win32crypt
 import requests
 
 from Crypto.PublicKey import RSA
-from Crypto.Cipher import PKCS1_OAEP
 
 def CLreciever(leng, client):    # function that returns client recieve
     data = ''.encode()
