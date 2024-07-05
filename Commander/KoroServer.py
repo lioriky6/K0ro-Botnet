@@ -14,7 +14,8 @@ class Server:
         self.ipList = []
         self.keys = []
         self.server_socket = server_socket
-        self.mailAccounts = open("mailAccounts.txt", 'r').read().split()
+        with open("mailAccounts.txt", 'r') as f:
+            self.mailAccounts = f.read().split()
         self.GU = GUI(self)
         self.crypto = RSAcrypto()
         th = threading.Thread(target=self.createGUI)
@@ -34,7 +35,8 @@ class Server:
         self.keys.append(Fernet(key))
         print(self.keys)
 
-        open("IP.txt", 'a').write(str(ip) + "\n")
+        with open("IP.txt", 'a') as f:
+            f.write(str(ip) + "\n")
         print((self.ipList))
         self.GU.addOnlineBots(ip)
 
@@ -46,9 +48,11 @@ class Server:
         self.ipList.remove(ip)
 
         if self.ipList == []:
-            open("IP.txt", 'w')
+            with open("IP.txt", 'w') as f:
+                pass
         for i in self.ipList:
-            open("IP.txt", 'w').write(str(i) + "\n")
+            with open("IP.txt", 'w') as f:
+                f.write(str(i) + "\n")
         print(self.ipList)
 
     def sendCommand(self, cmd):
